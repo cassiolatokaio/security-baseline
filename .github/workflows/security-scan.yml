@@ -32,5 +32,17 @@ jobs:
         with:
           scan-type: 'fs'
           scan-ref: '.'
-          exit-code: '1' # AQUI: Manda o GitHub ficar vermelho se achar algo
+          exit-code: '1'
           severity: 'CRITICAL,HIGH'
+
+  # NOVO ROBÔ ADICIONADO AQUI EMBAIXO:
+  procurar-codigo-inseguro:
+    name: Procurar Falhas no Código (SAST)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+      - name: Semgrep (Scanner de Código)
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: "p/default" # Regras oficiais de segurança
