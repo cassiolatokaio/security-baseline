@@ -32,3 +32,5 @@ jobs:
         with:
           scan-type: 'fs'
           scan-ref: '.'
+          exit-code: '1' # AQUI: Manda o GitHub ficar vermelho se achar algo
+          severity: 'CRITICAL,HIGH'
